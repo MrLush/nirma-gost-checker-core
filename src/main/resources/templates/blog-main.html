@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+</head>
+<body>
+    <div th:insert="blocks/header :: header"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <nav th:insert="blocks/menu :: menu"></nav>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <h1>Блог</h1>
+                <div th:each="el : ${posts}" class="alert alert-info mt-2">
+                    <div class="float-right">
+                        <a th:href="'/admin/blog/' + ${el.Id} + '/edit'" class="btn btn-warning btn-sm">Изменить</a>
+                        <form method="POST" th:action="'/admin/blog/' + ${el.Id} + '/remove'">
+                            <button type=submit class="btn btn-danger btn-sm">Удалить</button>
+                        </form>
+                    </div>
+                    <h3 th:text="${el.title}"/>
+                    <p th:text="${el.anons}"/>
+                    <a th:href="'/blog/' + ${el.Id}" class="btn btn-primary btn-sm">Детальнее</a>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
