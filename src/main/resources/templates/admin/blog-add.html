@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
     <script src="https://cdn.tiny.cloud/1/hqjui8xfno72p6brq6uoox2idxw4icq8ae3sl1lmvrqp53vp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
-<body>
+<body class="bg-light">
     <div th:insert="blocks/header :: header"></div>
     <div class="container-fluid">
         <div class="row">
@@ -45,23 +45,25 @@
                 <nav th:insert="blocks/menu :: menu"></nav>
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5 mb-5">
-                <form id="addForm" th:object="${blogPost}" method="POST">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <input type="text" name="title" th:field="*{title}" placeholder="Введите название статьи" class="form-control"><br>
-                            <input type="text" name="anons" th:field="*{anons}" placeholder="Введите анонс статьи" class="form-control"><br>
+                <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                    <form id="addForm" th:object="${blogPost}" method="POST">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <input type="text" name="title" th:field="*{title}" placeholder="Введите название статьи" class="form-control"><br>
+                                <input type="text" name="anons" th:field="*{anons}" placeholder="Введите анонс статьи" class="form-control"><br>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-9" th:insert="blocks/tinymce :: tinymce"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-9">
-                            <textarea th:field="*{body}" style="width:100%; height:600px"></textarea><br>
-                            <button type="submit" class="btn btn-success">Добавить статью</button>
+                        <div class="row">
+                            <div class="col-md-9" th:insert="blocks/tinymce :: tinymce"></div>
                         </div>
-                    </div>
-                </form>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <textarea th:field="*{body}" style="width:100%; height:600px"></textarea><br>
+                                <button type="submit" class="btn btn-success">Добавить статью</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </main>
         </div>
     </div>

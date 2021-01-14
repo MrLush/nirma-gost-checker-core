@@ -1,11 +1,13 @@
 package com.rivrs_project.blog.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
+@Import({ WebSecurityConfig.class })
 public class WebMvcConfig implements WebMvcConfigurer {
     //The IMAGE_RESOURCE_BASE constant defines the path segment that will serve images stored outside of the JAR file on the local server.
     public final static String IMAGE_RESOURCE_BASE = "/images/";
@@ -20,12 +22,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler(IMAGE_RESOURCE_BASE + "**")
                 .addResourceLocations("file:" + IMAGE_FILE_BASE);
     }
-/*
+
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("home");
-        registry.addViewController("/hello").setViewName("hello");
         registry.addViewController("/login").setViewName("login");
     }
 
- */
 }
