@@ -3,24 +3,18 @@ package com.rivrs_project.blog.controllers;
 import com.rivrs_project.blog.models.BlogPost;
 import com.rivrs_project.blog.repo.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class BlogPostController {
     @Autowired
     private BlogRepository blogRepository;
-/*
-    @GetMapping("/blog")
-    public String blogMain(Model model){
-        model.addAttribute("title", "Блог");
-        Iterable<Post> posts = blogRepository.findAllByOrderByIdAsc();
-        model.addAttribute("posts", posts);
-        return "admin/blog-main-admin";
-    }
-    */
+
     @GetMapping("/blog/add")
     public String addEditPost(Model model) {
         setDefaultBlogPost(model);

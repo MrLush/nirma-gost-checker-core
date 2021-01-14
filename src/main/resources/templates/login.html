@@ -1,21 +1,25 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title th:text="${title}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
 </head>
-<body>
-<div th:insert="blocks/header :: header"></div>
-<div class="container-fluid">
-    <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <nav th:insert="blocks/menu :: menu"></nav>
-        </nav>
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-
-        </main>
-    </div>
-</div>
+<body class="text-center align-middle bg-light" >
+    <main class="form-signin" style=" width: 100%; max-width: 330px; padding: 15px; margin: auto;">
+        <div th:if="${param.error}">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Неправильно введён логин или пароль
+            </div>
+        </div>
+        <form method="post">
+            <a class="text-dark display-6 col-md-3 col-lg-2 me-0 px-3" style="text-decoration: none;" href="/">ITMO GOST</a><br><br>
+            <input type="text" name="username" class="form-control" placeholder="Введите логин" required="" autofocus=""><br>
+            <input type="password" name="password" class="form-control" placeholder="Введите пароль" required=""><br>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+            <a class="nav-link" href="/registration">Ещё нет аккаунта?</a>
+            <p class="mt-5 mb-3 text-muted">© 2021</p>
+        </form>
+    </main>
 </body>
 </html>
