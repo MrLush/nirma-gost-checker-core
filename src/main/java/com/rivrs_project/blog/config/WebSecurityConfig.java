@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -20,6 +21,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     //For manager to search db for users
     @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return new BCryptPasswordEncoder(8);
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
