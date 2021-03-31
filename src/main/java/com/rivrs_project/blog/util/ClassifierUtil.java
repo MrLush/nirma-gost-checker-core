@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
     2. Обновляем поля в строке из csv где ID = +suited_id+  isClassified = 'true', CurElementMark = '+suited_class+'
  */
 public class ClassifierUtil {
+    //TODO Change paths
     private String classifierPath = "C:/LushnikovDM-serverApp-test/classificator-danya/ClassClassifier/ClassClassifier/ClassClassifier.py";
     private String documentsPath = "C:/LushnikovDM-serverApp-test/blog/src/main/resources/documents/";
     private TerminalUtil console = new TerminalUtil();

@@ -17,6 +17,7 @@ public class NormControlController {
         return "user/norm-control";
     }
 
+    //TODO Auto classify document by result2 file
     @GetMapping("/norm-control/{UUID}/classify")
     public String blogEdit(@PathVariable(value = "UUID") String UUID, Model model){
         ClassifierUtil classifierUtil = new ClassifierUtil();

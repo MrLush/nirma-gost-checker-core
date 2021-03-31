@@ -30,8 +30,7 @@ public class FileUploaderController {
         long start = System.nanoTime();
         String url = null;
         String documentPath = null;
-        //unic filename
-        UUID uuid = UUID.randomUUID();
+        UUID uuid = UUID.randomUUID(); //unique filename
         String fileName = uuid.toString();
 
         try {
@@ -43,14 +42,15 @@ public class FileUploaderController {
 
             long start2 = System.nanoTime();
             String docxCorrectorPath = "C:/LushnikovDM-serverApp-test/DocxCorrectorCore.exe";
+            String startId = "0"; // DocxCorrector will start to count paragraphs from this number
             String resultPath1 = getFilePathWithoutFileName(documentPath) + "result1.csv";
             String resultPath2 = getFilePathWithoutFileName(documentPath) + "result2.csv";
             String docxCorrectorCommand = "pull";
             String commandForDocxCorrector = docxCorrectorPath
                     + " " + docxCorrectorCommand
                     + " " + documentPath
-                    //TODO add paramet
-                    + " 0 " + resultPath1
+                    + " " + startId
+                    + " " + resultPath1
                     + " " + resultPath2;
             TerminalUtil csvPuller = new TerminalUtil();
             System.out.println("\n");

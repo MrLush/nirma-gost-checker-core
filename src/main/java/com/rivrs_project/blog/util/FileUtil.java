@@ -63,8 +63,8 @@ public class FileUtil {
         sb.append("/");
          */
         //TODO Add here user_id folder
-        //appending uuid to create folder
-        sb.append(fileName);
+
+        sb.append(fileName);   // Appending uuid to create folder
         createDirectoryIfItDoesntExist(sb.toString());
         sb.append("/");
         fileName += documentExtension;

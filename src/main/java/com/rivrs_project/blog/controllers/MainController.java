@@ -13,13 +13,7 @@ public class MainController {
         model.addAttribute("title", "Главная страница");
         return "home";
     }
+    //TODO Clear legacy code
 
-/*
-    @GetMapping("/login")
-    public String login(Model model){
-        model.addAttribute("title", "Вход");
-        return "login";
-    }
-
- */
+    //TODO Add custom application.parameters for heroku deploy
 }
